@@ -102,8 +102,19 @@ var GameScene = /*#__PURE__*/function (_Phaser$Scene) {
           text.setOrigin(0, 0.5);
           text.x = before.getTopLeft().x;
           text.y = before.getTopLeft().y + text.displayHeight / 2;
-          text.setShadow(3, 3, "rgba(0,0,0,0.5)", 5); //         tween to bottom
+          text.setShadow(3, 3, "rgba(0,0,0,0.5)", 5); 
 
+           // on touch, change text and bg colors
+          _this.input.on('pointerdown', function() {
+            var randomColor = Phaser.Utils.Array.GetRandom(colors);
+            var randomColor2 = Phaser.Utils.Array.GetRandom(colors);
+            
+            // change bg color
+            document.body.style.backgroundColor = randomColor;
+            text.setColor(randomColor2);
+          }, _this);
+
+          //         tween to bottom
           var bottomX = before.getBottomCenter().y - text.displayHeight / 2;
 
           var tween = _this.tweens.add({
