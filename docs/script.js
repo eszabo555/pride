@@ -69,16 +69,16 @@ var GameScene = /*#__PURE__*/function (_Phaser$Scene) {
       var element = document.createElement("style");
       document.head.appendChild(element);
       var sheet = element.sheet;
-      var styles = '@font-face { font-family: "Gilbert"; src: url("https://assets.codepen.io/4364/GilbertColorBoldPreview5.woff") format("woff"); }\n';
+      var styles = '@font-face { font-family: "Gilbert"; src: url("GilbertColorBoldPreview5.woff") format("woff"); }\n';
       sheet.insertRule(styles, 0);
     }
   }, {
     key: "preload",
     value: function preload() {
       this.load.script("webfont", "https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js");
-      this.load.image("before", "https://assets.codepen.io/4364/p-before.jpg");
-      this.load.image("after", "https://assets.codepen.io/4364/p-after.jpg");
-      this.load.image("mask2", "https://assets.codepen.io/4364/glass.png");
+      this.load.image("before", "p-before.jpg");
+      this.load.image("after", "p-after.jpg");
+      this.load.image("mask2", "glass.png");
     }
   }, {
     key: "create",
@@ -102,8 +102,19 @@ var GameScene = /*#__PURE__*/function (_Phaser$Scene) {
           text.setOrigin(0, 0.5);
           text.x = before.getTopLeft().x;
           text.y = before.getTopLeft().y + text.displayHeight / 2;
-          text.setShadow(3, 3, "rgba(0,0,0,0.5)", 5); //         tween to bottom
+          text.setShadow(3, 3, "rgba(0,0,0,0.5)", 5); 
 
+           // on touch, change text and bg colors
+          _this.input.on('pointerdown', function() {
+            var randomColor = Phaser.Utils.Array.GetRandom(colors);
+            var randomColor2 = Phaser.Utils.Array.GetRandom(colors);
+            
+            // change bg color
+            document.body.style.backgroundColor = randomColor;
+            text.setColor(randomColor2);
+          }, _this);
+
+          //         tween to bottom
           var bottomX = before.getBottomCenter().y - text.displayHeight / 2;
 
           var tween = _this.tweens.add({
