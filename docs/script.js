@@ -69,16 +69,16 @@ var GameScene = /*#__PURE__*/function (_Phaser$Scene) {
       var element = document.createElement("style");
       document.head.appendChild(element);
       var sheet = element.sheet;
-      var styles = '@font-face { font-family: "Gilbert"; src: url("https://assets.codepen.io/4364/GilbertColorBoldPreview5.woff") format("woff"); }\n';
+      var styles = '@font-face { font-family: "Gilbert"; src: url("GilbertColorBoldPreview5.woff") format("woff"); }\n';
       sheet.insertRule(styles, 0);
     }
   }, {
     key: "preload",
     value: function preload() {
       this.load.script("webfont", "https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js");
-      this.load.image("before", "https://assets.codepen.io/4364/p-before.jpg");
-      this.load.image("after", "https://assets.codepen.io/4364/p-after.jpg");
-      this.load.image("mask2", "https://assets.codepen.io/4364/glass.png");
+      this.load.image("before", "p-before.jpg");
+      this.load.image("after", "p-after.jpg");
+      this.load.image("mask2", "glass.png");
     }
   }, {
     key: "create",
